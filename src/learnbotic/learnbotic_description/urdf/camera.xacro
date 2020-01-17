@@ -2,7 +2,7 @@
   <robot name="camera" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <gazebo reference="Camera">
-      <sensor type="camera" name="camera_top">
+      <!-- <sensor type="camera" name="camera_top">
         <update_rate>30.0</update_rate>
         <camera name="head">
           <horizontal_fov>1.3962634</horizontal_fov>
@@ -15,10 +15,25 @@
             <near>0.02</near>
             <far>300</far>
           </clip>
-        </camera>
-        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        </camera> -->
+        <sensor name='camera' type='camera'>
+        <camera name='__default__'>
+         <horizontal_fov>1.047</horizontal_fov>
+         <image>
+           <width>320</width>
+           <height>240</height>
+         </image>
+         <clip>
+           <near>0.1</near>
+           <far>100</far>
+         </clip>
+       </camera>
+        <!-- <plugin name="camera_controller" filename="libgazebo_ros_camera.so"> -->
+        <plugin name="light_sensor_plugin" filename="/home/diogo/learnbotics_final_ws/devel/lib/libgazebo_light_sensor_plugin.so">
+
+        
           <alwaysOn>true</alwaysOn>
-          <updateRate>0.0</updateRate>
+          <updateRate>10</updateRate>
           <cameraName>diff/camera_top</cameraName>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
